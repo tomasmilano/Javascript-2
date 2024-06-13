@@ -1,35 +1,47 @@
-// Variables necesarias
-let totalPersonas = 0;
-const personas = [];
-const tragos = [
-    { nombre: 'Cerveza', precio: 5.000  },
-    { nombre: 'Vodka', precio: 10.000 },
-    { nombre: 'Whisky', precio: 15.000 },
-    
-];
 
-// Función para capturar entrada de personas
+let totalPersonas = 0;
+const personas = []; 
+const capacidadMaxima = 20; 
+const tragos = [
+    { nombre: 'Cerveza', precio: 5000 },
+    { nombre: 'Vodka', precio: 10000 },
+    { nombre: 'Whisky', precio: 15000 },
+];
+let tragosPedidos = 0; // contador de los tragos que pedis
+
+// cuanta gente entra al boliche
 function entrarPersona() {
-    const nombre = prompt("nombre de la persona que entra al boliche:");
+    if (totalPersonas >= capacidadMaxima) {
+        alert("Capacidad máxima alcanzada. No pueden entrar más personas al boliche.");
+        return;
+    }
+
+    const nombre = prompt("Ingrese el nombre de la persona:");
     if (nombre) {
         totalPersonas++;
         personas.push({ nombre: nombre });
-        mostrarResultado(`${nombre} entró al Boliche. Total de personas: ${totalPersonas}`);
+        mostrarResultado(`${nombre} entro al boliche. Capacidad: ${totalPersonas}/20`);
     }
 }
 
-// Función para pedir trago
+// funcion para pedir tragos
 function pedirTrago() {
+    if (tragosPedidos >= 5) {
+        alert("No puedes tomar más de 5 tragos.");
+        return;
+    }
+
     const tragoNombre = prompt("Ingrese el nombre del trago (Cerveza, Vodka, Whisky):");
     const trago = tragos.find(t => t.nombre.toLowerCase() === tragoNombre.toLowerCase());
     if (trago) {
-        mostrarResultado(`Se ha pedido un ${trago.nombre} que cuesta $${trago.precio}.`);
+        tragosPedidos++;
+        mostrarResultado(`Pediste ${trago.nombre} y te va a salir $${trago.precio}. Cantidad de tragos que pediste: ${tragosPedidos}`);
     } else {
         mostrarResultado(`Trago no disponible.`);
     }
 }
 
-// Función para mostrar resultados
+// funcion para mostrar resultados
 function mostrarResultado(mensaje) {
     const resultadoDiv = document.getElementById('resultado');
     const p = document.createElement('p');
@@ -37,7 +49,7 @@ function mostrarResultado(mensaje) {
     resultadoDiv.appendChild(p);
 }
 
-// Declaración de objetos
+// objetos
 const persona = {
     nombre: '',
     edad: 0,
