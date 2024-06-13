@@ -1,4 +1,4 @@
-
+// variables
 let totalPersonas = 0;
 const personas = []; 
 const capacidadMaxima = 20; 
