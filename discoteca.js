@@ -3,16 +3,16 @@ let totalPersonas = 0;
 const personas = []; 
 const capacidadMaxima = 20; 
 const tragos = [
-    { nombre: 'Cerveza', precio: 5000 },
-    { nombre: 'Vodka', precio: 10000 },
-    { nombre: 'Whisky', precio: 15000 },
+    { nombre: 'Stella', precio: 5000 },
+    { nombre: 'Smirnoff', precio: 10000 },
+    { nombre: 'Absolut', precio: 15000 },
 ];
 let tragosPedidos = 0; // contador de los tragos que pedis
 
 // cuanta gente entra al boliche
 function entrarPersona() {
     if (totalPersonas >= capacidadMaxima) {
-        alert("Capacidad máxima alcanzada. No pueden entrar más personas al boliche.");
+        alert("Lo siento, V.I.P lleno.");
         return;
     }
 
@@ -20,24 +20,24 @@ function entrarPersona() {
     if (nombre) {
         totalPersonas++;
         personas.push({ nombre: nombre });
-        mostrarResultado(`${nombre} entro al boliche. Capacidad: ${totalPersonas}/20`);
+        mostrarResultado(`${nombre} entró al VIP. Capacidad: ${totalPersonas}/20`);
     }
 }
 
 // funcion para pedir tragos
 function pedirTrago() {
     if (tragosPedidos >= 5) {
-        alert("No puedes tomar más de 5 tragos.");
+        alert("Deja de tomar o llamo a seguridad.");
         return;
     }
 
-    const tragoNombre = prompt("Ingrese el nombre del trago (Cerveza, Vodka, Whisky):");
+    const tragoNombre = prompt("¿Que vamos a tomar hoy? (Stella, Smirnoff, Absolut):");
     const trago = tragos.find(t => t.nombre.toLowerCase() === tragoNombre.toLowerCase());
     if (trago) {
         tragosPedidos++;
-        mostrarResultado(`Pediste ${trago.nombre} y te va a salir $${trago.precio}. Cantidad de tragos que pediste: ${tragosPedidos}`);
+        mostrarResultado(`Pediste ${trago.nombre} y te va a salir $${trago.precio}. Ya te tomaste esta cantidad de tragos: ${tragosPedidos}` );
     } else {
-        mostrarResultado(`Trago no disponible.`);
+        mostrarResultado(`Ese no lo tenemos.`);
     }
 }
 
