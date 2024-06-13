@@ -16,7 +16,7 @@ function entrarPersona() {
         return;
     }
 
-    const nombre = prompt("Ingrese el nombre de la persona:");
+    const nombre = prompt("¿Quien entra? Mujer pasa gratis, Hombre paga $15.000:");
     if (nombre) {
         totalPersonas++;
         personas.push({ nombre: nombre });
