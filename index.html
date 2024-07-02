@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Simulador de Discoteca</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #resultado { margin-top: 20px; }
+    </style>
 </head>
 <body>
     <h1>Bienvenido a mi Boliche</h1>
-    <button onclick="entrarPersona()">¿Quien entra al VIP?</button>
+    <button onclick="entrarPersona()">¿Quién entra al VIP?</button>
+    <input type="text" id="nombrePersona" placeholder="Nombre de la persona">
     <button onclick="pedirTrago()">Pedite algo de tomar</button>
+    <input type="text" id="nombreTrago" placeholder="Nombre del trago (Stella, Smirnoff, Absolut)">
     <div id="resultado"></div>
     <script src="discoteca.js"></script>
 </body>
